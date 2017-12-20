@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html>
+ <head>
+  <title>Виселица</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0">
+ </head>
+
+ <body>
+  <h1>Memento Mori!</h1>
+ <script>
+  //Массив со словами
+  var words = [
+   "tea",
+   "mother",
+   "dog",
+   "frog",
+   "fog",
+   "hotel",
+   "ukraine"
+  ];
+  //Выбираем случайное слово
+  
+  var word = words[Math.floor(Math.random() * words.length)];
+  
+  //Создаем итоговый массив
+  
+  var answerArray = [];
+  for (var i = 0; i < word.length; i++) {
+   answerArray[i] = " _ ";
+  }
+  
+  var remainingLetters = word.length;
+  
+  //Игровой цикл
+  while (remainingLetters > 0) {
+   //Состояние игры
+   alert("Mac выбрал слово " + answerArray.join(""));
+   //запрос варианта ответа
+   var guess = prompt("Угадай букву или нажми Отмена для выхода");
+   
+   if (guess==null) {
+    //выход из игрового цикла
+    break;
+   } else if (guess.length !== 1) {
+    alert("Введи букву");
+   } else {
+    //Обновляем состояние игры
+    for (var j = 0; j < word.length; j++) {
+     if (word[j] === guess) {
+      answerArray[j] = guess;
+      remainingLetters--;
+     }
+    }
+   }
+   //Конец игрового цикла
+   
+  }
+  //Ответ и поздравление
+  alert(answerArray.join (" "));
+  alert ("А слово то было " + word);
+  </script>
+
+ </body>
+</html>
